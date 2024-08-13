@@ -1,5 +1,5 @@
 # Go to gms slected all transient well and go to graphs and select timeseries and then click export and then all data or well and export it to excel file. then use these codes
-# # code to convert transient observed and calculated data from GMS modflow in excel time series (might have to convert copied data into text format before using code0
+# # code to convert transient observed and calculated data from GMS modflow in excel time series (copied dates will be in text format and :00 that is seconds should be removed manually before using below code)
 # import pandas as pd
 #
 # # Load the Excel file
