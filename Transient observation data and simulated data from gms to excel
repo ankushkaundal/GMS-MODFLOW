@@ -1,0 +1,45 @@
+# Go to gms slected all transient well and go to graphs and select timeseries and then click export and then all data or well and export it to excel file. then use these codes
+# # code to convert transient observed and calculated data from GMS modflow in excel time series (might have to convert copied data into text format before using code0
+# import pandas as pd
+#
+# # Load the Excel file
+# file_path = r"C:\Users\ankush kaundal\Desktop\COMPRE GMS RESULTS\new noyyil gms files\Noyyil_26Dec\MODFLOW RESULTS\simulated vs observed GWD - Transient - Copy.xlsx"  # replace with your actual file path
+# df = pd.read_excel(file_path, sheet_name="Sheet3")
+#
+# # Ensure the 'Well' column is treated as a string, handling NaNs by replacing them with an empty string
+# df['Well'] = df['Well'].astype(str).fillna('')
+#
+# # Convert the 'Date' column to datetime format
+# df['Date'] = pd.to_datetime(df['Date'], format='%m-%d-%Y')
+#
+# # Format the 'Date' column to the desired format
+# df['Date'] = df['Date'].dt.strftime('%d-%m-%Y')
+#
+#
+# # Filter out rows where the 'Well' column contains '- Observed'
+# filtered_df = df[~df['Well'].str.contains('- Observed')]
+# removed_df = df[df['Well'].str.contains('- Observed')]
+#
+# # # Remove rows from removed_df where the 'GWL' column is empty (NaN)
+# removed_df = removed_df.dropna(subset=['Date'])
+#
+# # Save the filtered data to a new Excel file
+# filtered_df.to_excel(r"C:\Users\ankush kaundal\Desktop\COMPRE GMS RESULTS\new noyyil gms files\Noyyil_26Dec\MODFLOW RESULTS\1a.xlsx", index=False)
+#
+# # Save the removed data (without empty GWL rows) to a new Excel file
+# removed_df.to_excel(r"C:\Users\ankush kaundal\Desktop\COMPRE GMS RESULTS\new noyyil gms files\Noyyil_26Dec\MODFLOW RESULTS\2a.xlsx", index=False)
+#
+# print("Files saved successfully.")
+
+### before using below code, you might need to check and preprocess 1a and 2a file
+# ######## merge two file now
+# import pandas as pd
+# path = r"C:\Users\ankush kaundal\Desktop\COMPRE GMS RESULTS\new noyyil gms files\Noyyil_26Dec\MODFLOW RESULTS\1a.xlsx"
+# path2 = r"C:\Users\ankush kaundal\Desktop\COMPRE GMS RESULTS\new noyyil gms files\Noyyil_26Dec\MODFLOW RESULTS\2a.xlsx"
+# 
+# df1 = pd.read_excel(path)
+# df2 = pd.read_excel(path2)
+# 
+# df3 = pd.merge(df2,df1, on=['Well', 'Date'], how = 'inner')
+# 
+# df3.to_excel(r"C:\Users\ankush kaundal\Desktop\COMPRE GMS RESULTS\new noyyil gms files\Noyyil_26Dec\MODFLOW RESULTS\3a.xlsx", index=False)
