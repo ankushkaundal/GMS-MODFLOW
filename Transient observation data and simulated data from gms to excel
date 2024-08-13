@@ -31,7 +31,7 @@
 #
 # print("Files saved successfully.")
 
-### before using below code, you might need to check and preprocess 1a and 2a file
+### before using below code, you might need to check and preprocess 1a and 2a file, create a Well column mannualy by removing Observed part from names and maybe converting both well names to text format 
 # ######## merge two file now
 # import pandas as pd
 # path = r"C:\Users\ankush kaundal\Desktop\COMPRE GMS RESULTS\new noyyil gms files\Noyyil_26Dec\MODFLOW RESULTS\1a.xlsx"
